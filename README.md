@@ -14,6 +14,22 @@
 
 ## Layout
 - Main activity
-	- Button to scanner activity
-	- Button to scan history activity
-	- Button to collection management activity
+    - Button to scanner activity
+    - Button to scan history activity
+    - Button to collection management activity
+
+- Scanner activity 
+    - scanner fragment
+    - manual entry of ISBN number ?
+    - manual entry of all info
+    - forward to a complete enter activity
+
+- complete enter activity
+    - Details needed
+        - book name
+        - genera
+        - ISBN
+        - have you read it
+        - score
+    - add the book to the local db of books
+  
