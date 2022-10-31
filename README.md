@@ -17,7 +17,3 @@
 	- Button to scanner activity
 	- Button to scan history activity
 	- Button to collection management activity
-
-
-- Scanner activity
-	- add the 
