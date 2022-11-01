@@ -1,7 +1,7 @@
 # Mobile Development Small Project
 ### My Little Library
 
-#### Due date is [[2022-11-09|9th November]]
+#### Due date is 9th November
 
 ## Used technologies
 -  **Room** or **SQLite** as the database?
@@ -12,24 +12,33 @@
 - **API**
 	- [Google Books](https://developers.google.com/books/docs/v1/using) ?
 
+### ! Decided to go with "Shelf" as a book collection name
+
 ## Layout
-- Main activity
-    - Button to scanner activity
-    - Button to scan history activity
-    - Button to collection management activity
-
-- Scanner activity 
-    - scanner fragment
-    - manual entry of ISBN number ?
-    - manual entry of all info
-    - forward to a complete enter activity
-
-- complete enter activity
+- **Main Activity**
+	- *Shelves Fragment*
+		- View all Shelves
+			Clicking on a shelf should open another fragment or activity with all books saved in the shelf
+			- View books in the shelf
+				Clicking on a book should open another fragment or activity with book data, available edition or deletion of the record
+			- Add new books to the shelf
+			- Remove books from the shelf
+		- Add new Shelf
+	- *Scanner Fragment*
+		- Scanner
+			After scan and successful data fetch from API opens "Add Book Activity" with the imported data that can be changed
+		-  Button to manually input scanner activity
+			After click opens "Add Book Activity" without any data default data
+	- *History Fragment*
+		- View all adds history
+- **Add Book Activity**
     - Details needed
         - book name
-        - genera
+        - genre
         - ISBN
         - have you read it
         - score
+        - To which shelves should it be added to?
     - add the book to the local db of books
-  
+- **Show Book Activity** // not created yet
+	- All book data
