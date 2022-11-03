@@ -3,13 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShelvesFragment">
+    tools:context=".ShelvesFragment"
+    android:orientation="vertical"
+    android:layout_margin="5dp">
 
-        <TextView
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shelvesView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/newShelf" />
+
+        <Button
+            android:id="@+id/newShelf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Shelves"
-            android:textSize="25dp"
-            android:layout_centerInParent="true"/>
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="Add Shelf" />
+
+
 
 </RelativeLayout>

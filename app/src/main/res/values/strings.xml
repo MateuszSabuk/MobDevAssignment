@@ -5,5 +5,10 @@
     <string name="scanner_title">Add Book</string>
     <string name="history_title">History</string>
 
+    <string name="unlisted_books">Unlisted</string>
+    <string name="add_shelf">Unlisted</string>
+
     <string name="manual_add_button_text">Enter code manually</string>
+
+
 </resources>
