@@ -9,6 +9,10 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import pl.sabuk.mateusz.assignment.fragments.HistoryFragment;
+import pl.sabuk.mateusz.assignment.fragments.ScannerFragment;
+import pl.sabuk.mateusz.assignment.fragments.ShelvesFragment;
+
 public class MainActivity extends AppCompatActivity {
 
 

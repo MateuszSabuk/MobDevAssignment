@@ -27,9 +27,10 @@ public class AddBookActivity extends AppCompatActivity {
                 Book book = new Book();
 
                 // TODO: Check and sanitize inputs, you ll figure it out
-                // Those two are just examples
-                book.title = "What";
-                book.addToShelves(new int[] {2,45,3,5});
+                // Those three are just examples
+                book.title = "Just wanted to add a really long title for some tests";
+                book.addToShelves(new int[] {2,45,9,5});
+                book.isRead = true;
 
                 // Adding book to the database
                 AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());

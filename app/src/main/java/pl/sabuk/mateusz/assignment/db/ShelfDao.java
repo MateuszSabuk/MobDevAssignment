@@ -13,6 +13,9 @@ public interface ShelfDao {
     @Query("SELECT * FROM Shelf")
     List<Shelf> getAllShelves();
 
+    @Query("SELECT * FROM Shelf WHERE id = :id")
+    List<Shelf> getShelfById(int id);
+
     @Insert
     void insertShelf(Shelf... shelf);
 

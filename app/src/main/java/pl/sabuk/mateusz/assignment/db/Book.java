@@ -4,10 +4,17 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.List;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 @Entity
 public class Book {
+
+    public Book(){
+        this.addTime = (new SimpleDateFormat("yyyy.MM.dd HH:mm")).format(new Timestamp(System.currentTimeMillis()));
+    }
+
+
     @PrimaryKey(autoGenerate = true)
     public int id;
 
@@ -29,8 +36,12 @@ public class Book {
     @ColumnInfo(name = "my_score")
     public Double myScore;
 
+    @ColumnInfo(name = "add_time")
+    public String addTime = "";
+
     @ColumnInfo(name = "shelf_ids")
     protected String shelfIds = "{}";
+
 
     public boolean isInShelf(int shelfId){
         String[] ids = this.shelfIds.substring(1, this.shelfIds.length() - 1).split(",");
@@ -44,7 +55,8 @@ public class Book {
     }
 
     public int[] getShelves(){
-        String[] idsStrings = this.shelfIds.substring(1, this.shelfIds.length() - 1).split(",");
+        String[] idsStrings = (this.shelfIds.substring(1, this.shelfIds.length() - 1)).split(",");
+        if (idsStrings.length == 1) if (idsStrings[0] == "") return new int [0];
         int[] ids = new int[idsStrings.length];
         for(int i = 0; i < ids.length;i++){
             if (idsStrings[i] == "") continue;

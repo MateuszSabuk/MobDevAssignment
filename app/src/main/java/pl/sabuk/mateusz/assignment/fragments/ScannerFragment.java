@@ -1,4 +1,4 @@
-package pl.sabuk.mateusz.assignment;
+package pl.sabuk.mateusz.assignment.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import pl.sabuk.mateusz.assignment.AddBookActivity;
+import pl.sabuk.mateusz.assignment.R;
 
 public class ScannerFragment extends Fragment {
     private SurfaceView surfaceView;

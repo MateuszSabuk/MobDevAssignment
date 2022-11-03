@@ -1,16 +1,26 @@
 package pl.sabuk.mateusz.assignment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Collections;
+import java.util.List;
+
+import pl.sabuk.mateusz.assignment.adapters.AddShelfAdapter;
+import pl.sabuk.mateusz.assignment.adapters.ShelfBooksListAdapter;
 import pl.sabuk.mateusz.assignment.db.AppDatabase;
+import pl.sabuk.mateusz.assignment.db.Book;
 import pl.sabuk.mateusz.assignment.db.Shelf;
 
 public class AddShelfActivity extends AppCompatActivity {
+    private AddShelfAdapter addShelfAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +35,8 @@ public class AddShelfActivity extends AppCompatActivity {
                     finish();
                 }
                 //TODO: Checkboxes for the books
+//                addShelfAdapter.getBookList()
+
                 Shelf shelf = new Shelf();
                 shelf.name = name;
 
@@ -34,5 +46,34 @@ public class AddShelfActivity extends AppCompatActivity {
                 finish();
             }
         });
+        initRecyclerView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    private void initRecyclerView() {
+        RecyclerView shelvesView = this.findViewById(R.id.add_books_recycler_view);
+        shelvesView.setLayoutManager(new LinearLayoutManager(this));
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration( this, DividerItemDecoration.VERTICAL);
+        shelvesView.addItemDecoration((dividerItemDecoration));
+
+        addShelfAdapter = new AddShelfAdapter( this);
+        shelvesView.setAdapter(addShelfAdapter);
+
+        AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
+        // Get all books from database
+        List<Book> bookList = db.bookDao().getAllBooks();
+
+        for (int i = bookList.size()-1; i >= 0 ; i--) {
+            bookList.get(i).isRead = false;
+        }
+
+        // Reverse so new are on top on the bottom
+        Collections.reverse(bookList);
+        addShelfAdapter.setShelfList(bookList);
     }
 }

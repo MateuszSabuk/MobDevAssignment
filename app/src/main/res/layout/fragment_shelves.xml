@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShelvesFragment"
+    tools:context=".fragments.ShelvesFragment"
     android:orientation="vertical"
     android:layout_margin="5dp">
 
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:text="Add Shelf" />
+            android:text="@string/add_shelf" />
 
 
 
