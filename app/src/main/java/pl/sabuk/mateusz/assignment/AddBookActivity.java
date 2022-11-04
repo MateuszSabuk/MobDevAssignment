@@ -2,6 +2,7 @@ package pl.sabuk.mateusz.assignment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ import pl.sabuk.mateusz.assignment.db.Book;
 
 public class AddBookActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +62,8 @@ public class AddBookActivity extends AppCompatActivity {
         GenAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genreInput.setAdapter(GenAdaptor);
 
-        RadioButton tets = (RadioButton) findViewById(R.id.bookIsRead);
-        Boolean isReadInput = false;
-        if (tets.isActivated()) isReadInput = true;
-
-
-
+        RadioButton isReadRadioBtn = (RadioButton) findViewById(R.id.bookIsRead);
+        boolean isReadInput = isReadRadioBtn.isActivated();
 
 
         //Onclick function to show how to add books
