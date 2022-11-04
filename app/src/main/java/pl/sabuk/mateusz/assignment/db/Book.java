@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
 @Entity
 public class Book {
 
+
+    // TODO fix time warning
     public Book(){
         this.addTime = (new SimpleDateFormat("yyyy.MM.dd HH:mm")).format(new Timestamp(System.currentTimeMillis()));
     }

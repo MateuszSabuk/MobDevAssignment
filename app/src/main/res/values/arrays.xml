@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="genreTypes" >
+        <item>Education</item>
+        <item>Sci-Fi</item>
+        <item>Cooking</item>
+        <item>Romance</item>
+    </string-array>
+
+</resources>
