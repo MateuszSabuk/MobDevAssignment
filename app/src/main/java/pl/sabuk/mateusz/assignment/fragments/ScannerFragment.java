@@ -1,6 +1,8 @@
 package pl.sabuk.mateusz.assignment.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -21,7 +23,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 import pl.sabuk.mateusz.assignment.AddBookActivity;
+import pl.sabuk.mateusz.assignment.BookAPIClass;
 import pl.sabuk.mateusz.assignment.R;
 
 public class ScannerFragment extends Fragment {
@@ -55,11 +60,18 @@ public class ScannerFragment extends Fragment {
         EditText textISBNField = (EditText) getView().findViewById(R.id.isbnNumFinder);
         addISBNButton.setOnClickListener(view1 -> {
             String ISBNNum = textISBNField.getText().toString();
-            Log.d("isbn Num", ISBNNum);
 
-            Intent intent = new Intent(getActivity(), AddBookActivity.class);
-            intent.putExtra("ISBN", ISBNNum);
-            startActivity(intent);
+            // TODO make sure that the input is a number
+
+            // TODO implement scanner
+
+            // TODO Start add book activity with needed info
+
+
+
+            Log.d("isbn Num", ISBNNum);
+            Toast.makeText(getContext(), "Getting Book from the web", Toast.LENGTH_SHORT).show();
+            BookAPIClass book = new BookAPIClass(ISBNNum, this.requireContext());
 
         });
     }
