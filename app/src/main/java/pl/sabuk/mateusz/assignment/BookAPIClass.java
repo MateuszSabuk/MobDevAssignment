@@ -1,9 +1,11 @@
 package pl.sabuk.mateusz.assignment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -24,7 +26,7 @@ public class BookAPIClass {
 
 
 
-    public BookAPIClass(String ISBNNum, Context context) {
+    public BookAPIClass(String ISBNNum, Context context, Activity activity) {
         this.ISBNNum = ISBNNum;
         this.context = context;
 
@@ -41,8 +43,9 @@ public class BookAPIClass {
                 try {
                     if (response.get("totalItems").toString().equals("0")) {
                         Log.d("ISBN Lookup", "book not found");
-                        Toast.makeText(context,
-                                "Book is not found. \nCheck the ISBN number, but it might not be in our library", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Book is not found. \n" +
+                                        "Check the ISBN number, but it might not be in our library",
+                                Toast.LENGTH_LONG).show();
                     } else {
                         // code when one or more books is found
 
@@ -56,11 +59,13 @@ public class BookAPIClass {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         Log.d("alert Button", "pressed yes");
-                                        /*
-                                        Intent intent = new Intent(getActivity(), AddBookActivity.class);
+
+                                        Intent intent = new Intent(activity, AddBookActivity.class);
                                         intent.putExtra("ISBN", ISBNNum);
-                                        startActivity(intent);
-                                        */
+                                        intent.putExtra("Title", getTitle());
+                                        intent.putExtra("Author", getAuthor());
+                                        context.startActivity(intent);
+
                                     }
                                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                                     @Override

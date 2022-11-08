@@ -68,10 +68,9 @@ public class ScannerFragment extends Fragment {
             // TODO Start add book activity with needed info
 
 
-
             Log.d("isbn Num", ISBNNum);
             Toast.makeText(getContext(), "Getting Book from the web", Toast.LENGTH_SHORT).show();
-            BookAPIClass book = new BookAPIClass(ISBNNum, this.requireContext());
+            BookAPIClass book = new BookAPIClass(ISBNNum, this.requireContext(), this.getActivity());
 
         });
     }

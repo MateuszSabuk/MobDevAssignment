@@ -28,15 +28,20 @@ public class AddBookActivity extends AppCompatActivity {
         Bundle extra = getIntent().getExtras();
 
         TextView isbnText = (TextView) findViewById(R.id.bookISBMInput);
+        EditText bookTitle = findViewById(R.id.bookNameInput);
+        EditText bookAuthor = findViewById(R.id.bookAuthorInput);
 
         if (extra != null) {
-            String ISBNNum = extra.getString("ISBN");
-            isbnText.setText(ISBNNum);
+            String numISBNAPI = extra.getString("ISBN");
+            isbnText.setText(numISBNAPI);
+            String titleAPI = extra.getString("Title");
+            bookTitle.setText(titleAPI);
+            String authorAPI = extra.getString("Author");
+            bookAuthor.setText(authorAPI);
+
         }else  isbnText.setText("0000");
 
 
-        EditText bookTitle = findViewById(R.id.bookNameInput);
-        EditText bookAuthor = findViewById(R.id.bookAuthorInput);
 
         SeekBar scoreInput = (SeekBar) findViewById(R.id.bookScoreInput);
         TextView scoreText = findViewById(R.id.bookScoreValue);
@@ -55,7 +60,7 @@ public class AddBookActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-
+        // TODO Add more genres to spinner
         Spinner genreInput = (Spinner) findViewById(R.id.bookGenreInput);
         ArrayAdapter<CharSequence> GenAdaptor = ArrayAdapter.createFromResource(this,
                 R.array.genreTypes, android.R.layout.simple_spinner_item);
