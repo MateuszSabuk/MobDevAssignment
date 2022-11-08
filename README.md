@@ -3,7 +3,7 @@
 
 #### Due date is 9th November
 
-## group is made by Mateusz Sabuk (62540) and Arthur Wilhelm Strømme Kristiansen (62255)
+#### Group is made by Mateusz Sabuk (62540) and Arthur Wilhelm Strømme Kristiansen (62255)
 
 
 ## Used technologies
