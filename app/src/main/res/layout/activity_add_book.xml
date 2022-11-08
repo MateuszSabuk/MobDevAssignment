@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddBookActivity">
-    <!-- TODO work on layout, to small input space, check one radio -->
 
 
     <LinearLayout
@@ -49,7 +48,7 @@
             <EditText
                 android:id="@+id/bookNameInput"
                 android:layout_width="match_parent"
-                android:layout_height="77dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
 
         </LinearLayout>
@@ -127,7 +126,7 @@
             <Spinner
                 android:id="@+id/bookGenreInput"
                 android:layout_width="match_parent"
-                android:layout_height="113dp"
+                android:layout_height="42dp"
                 android:layout_weight="1" />
 
 
@@ -139,9 +138,9 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="64dp"
                 android:layout_weight="3"
-                android:gravity="center"
+                android:gravity="center|top"
                 android:text="Read:" />
 
 

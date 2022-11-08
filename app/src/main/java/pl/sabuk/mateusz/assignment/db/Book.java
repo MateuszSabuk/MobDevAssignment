@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 public class Book {
 
 
-    // TODO fix time warning
     public Book(){
         this.addTime = (new SimpleDateFormat("yyyy.MM.dd HH:mm")).format(new Timestamp(System.currentTimeMillis()));
     }
@@ -96,10 +95,8 @@ public class Book {
         this.shelfIds = "{" + idsString + "}";
     }
 
-    // TODO: Implement this
     public void removeFromShelves(int[] shelfIds){
         String[] idsStrings = this.shelfIds.substring(1, this.shelfIds.length() - 1).split(",");
-        // TODO: Probably with a list would be easier glhf
     }
 }
 

@@ -63,7 +63,6 @@ public class AddBookActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        // TODO Add more genres to spinner
         Spinner genreInput = (Spinner) findViewById(R.id.bookGenreInput);
         ArrayAdapter<CharSequence> GenAdaptor = ArrayAdapter.createFromResource(this,
                 R.array.genreTypes, android.R.layout.simple_spinner_item);
