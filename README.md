@@ -4,7 +4,7 @@
 #### Due date is 9th November
 
 #### Group is made by Mateusz Sabuk (62540) and Arthur Wilhelm Strømme Kristiansen (62255)
-
+#### Subject: My culture tracker
 
 ## Used technologies
 -  **Room** or **SQLite** as the database?
