@@ -90,7 +90,7 @@ public class ShowShelfActivity extends AppCompatActivity implements ShelfBooksLi
 
     @Override
     public void onBookClick(int position) {
-        Intent intent = new Intent(this, ShowShelfActivity.class);
+        Intent intent = new Intent(this, ShowBookActivity.class);
         int id = this.shelfBooksListAdapter.getBookListAt(position).id;
         intent.putExtra("id", id);
         startActivity(intent);

@@ -30,6 +30,7 @@ public class AddBookActivity extends AppCompatActivity {
         TextView isbnText = (TextView) findViewById(R.id.bookISBMInput);
         EditText bookTitle = findViewById(R.id.bookNameInput);
         EditText bookAuthor = findViewById(R.id.bookAuthorInput);
+        EditText bookDescription = findViewById(R.id.bookDescriptionInput);
 
         if (extra != null) {
             String numISBNAPI = extra.getString("ISBN");
@@ -38,8 +39,10 @@ public class AddBookActivity extends AppCompatActivity {
             bookTitle.setText(titleAPI);
             String authorAPI = extra.getString("Author");
             bookAuthor.setText(authorAPI);
+            String descriptionAPI = extra.getString("Description");
+            bookDescription.setText(descriptionAPI);
 
-        }else  isbnText.setText("0000");
+        }else  isbnText.setText("0");
 
 
 
@@ -85,7 +88,7 @@ public class AddBookActivity extends AppCompatActivity {
                 book.myScore = Double.valueOf(scoreText.getText().toString());
                 book.genre = genreInput.getSelectedItem().toString();
                 book.isRead = finalIsReadInput;
-
+                book.description = bookDescription.getText().toString() ;
                 book.addToShelves(new int[] {2,45,9,5}); // what?
                 // Adding book to the database
                 AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());

@@ -41,6 +41,9 @@ public class Book {
     @ColumnInfo(name = "add_time")
     public String addTime = "";
 
+    @ColumnInfo(name = "description")
+    public String description = "";
+
     @ColumnInfo(name = "shelf_ids")
     protected String shelfIds = "{}";
 

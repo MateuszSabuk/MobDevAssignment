@@ -64,6 +64,7 @@ public class BookAPIClass {
                                         intent.putExtra("ISBN", ISBNNum);
                                         intent.putExtra("Title", getTitle());
                                         intent.putExtra("Author", getAuthor());
+                                        intent.putExtra("Description", getDescription());
                                         context.startActivity(intent);
 
                                     }
@@ -123,6 +124,16 @@ public class BookAPIClass {
     public String getTitle() {
         try {
             return bookItem.getJSONObject("volumeInfo").get("title").toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "";
+
+    }
+
+    public String getDescription() {
+        try {
+            return bookItem.getJSONObject("volumeInfo").get("description").toString();
         } catch (JSONException e) {
             e.printStackTrace();
         }
