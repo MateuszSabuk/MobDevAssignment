@@ -6,6 +6,7 @@ package pl.sabuk.mateusz.assignment.adapters;
         import android.view.ViewGroup;
         import android.widget.CheckBox;
         import android.widget.TextView;
+        import android.widget.Toast;
 
         import androidx.annotation.NonNull;
         import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ package pl.sabuk.mateusz.assignment.adapters;
         import java.util.List;
 
         import pl.sabuk.mateusz.assignment.R;
+        import pl.sabuk.mateusz.assignment.db.AppDatabase;
         import pl.sabuk.mateusz.assignment.db.Book;
         import pl.sabuk.mateusz.assignment.db.Shelf;
 
@@ -50,6 +52,26 @@ public class ShelfBooksListAdapter extends RecyclerView.Adapter<ShelfBooksListAd
     public void onBindViewHolder(@NonNull ShelfBooksListAdapter.ShelfBooksViewHolder holder, int position) {
         holder.bookTitle.setText(this.bookList.get(position).title);
         holder.recyclerReadCheckBox.setChecked(this.bookList.get(position).isRead);
+
+        holder.recyclerReadCheckBox.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Context context = v.getContext();
+                int duration = Toast.LENGTH_SHORT;
+
+                CharSequence text = "Not read";
+                if (holder.recyclerReadCheckBox.isChecked()){
+                    text = "Read!";
+                }
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+                AppDatabase db = AppDatabase.getDbInstance(v.getContext());
+                Book book = bookList.get(position);
+                book.isRead = holder.recyclerReadCheckBox.isChecked();
+                db.bookDao().updateBook(book);
+            }
+        });
     }
 
     @Override
