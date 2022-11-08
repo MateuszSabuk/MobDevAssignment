@@ -29,7 +29,6 @@ public class ShowBookActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
         Book book = db.bookDao().getBookById(bookId);
 
-        //Shelf book = db.shelfDao().getShelfById(bookId);
 
         TextView titleText = (TextView) findViewById(R.id.bookTitleDisplay);
         titleText.setText(book.title);

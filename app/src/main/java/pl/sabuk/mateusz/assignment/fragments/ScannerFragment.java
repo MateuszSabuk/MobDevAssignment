@@ -94,7 +94,6 @@ public class ScannerFragment extends Fragment {
 
     // this method is based on code from:
     // https://medium.com/analytics-vidhya/creating-a-barcode-scanner-using-android-studio-71cff11800a2
-
     private void initialiseDetectorsAndSources() {
 
         Toast.makeText(getContext(), "Barcode scanner started", Toast.LENGTH_SHORT).show();
@@ -141,7 +140,6 @@ public class ScannerFragment extends Fragment {
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
-                // Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -149,7 +147,7 @@ public class ScannerFragment extends Fragment {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() != 0) {
                     String barcodeVal =  barcodes.valueAt(0).displayValue;
-                    Log.d("barcode", barcodeVal);
+                    Log.d("barcode", "book " + barcodeVal);
                     textISBNField.setText(barcodeVal);
 
 

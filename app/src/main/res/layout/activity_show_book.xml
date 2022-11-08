@@ -17,72 +17,74 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
 
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="22dp"
-                    android:id="@+id/bookTitleDisplay"/>
             <TextView
+                android:id="@+id/bookTitleDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:id="@+id/bookAuthorDisplay"/>
+                android:textSize="22dp" />
+
             <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:id="@+id/bookGeneraDisplay"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/bookScoreDisplay"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/bookReadDisplay"/>
+                android:id="@+id/bookAuthorDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/bookISBNDisplay" />
+            <TextView
+                android:id="@+id/bookGeneraDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right" />
 
+            <TextView
+                android:id="@+id/bookScoreDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/bookReadDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/bookISBNDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>
 
 
         <TextView
+            android:id="@+id/bookDescriptionDisplay"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:id="@+id/bookDescriptionDisplay"
-            android:text="Description"/>
+            android:text="Description" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            >
+            android:layout_weight="1">
+
             <Button
+                android:id="@+id/bookViewBackButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:id="@+id/bookViewBackButton"
-                android:text="Back"/>
+                android:text="Back" />
 
             <TextView
+                android:id="@+id/dateAddedDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="bottom"
+                android:layout_weight="1"
                 android:textDirection="rtl"
-                android:id="@+id/dateAddedDisplay"
                 tools:ignore="RtlHardcoded" />
         </LinearLayout>
 
