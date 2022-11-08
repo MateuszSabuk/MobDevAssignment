@@ -24,9 +24,11 @@ public class ShelfBooksListAdapter extends RecyclerView.Adapter<ShelfBooksListAd
     private Context context;
     private List<Book> bookList;
     private OnBookListener mOnBookListener;
-    public ShelfBooksListAdapter(Context context, OnBookListener onBookListener) {
+    private OnHoldListener mOnHoldListener;
+    public ShelfBooksListAdapter(Context context, OnBookListener onBookListener, OnHoldListener onHoldListener) {
         this.context = context;
         this.mOnBookListener = onBookListener;
+        this.mOnHoldListener = onHoldListener;
     }
 
     public Book getBookListAt(int index){
@@ -46,7 +48,7 @@ public class ShelfBooksListAdapter extends RecyclerView.Adapter<ShelfBooksListAd
     @Override
     public ShelfBooksListAdapter.ShelfBooksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.shelf_books_recycler, parent, false);
-        return new ShelfBooksViewHolder(view, mOnBookListener);
+        return new ShelfBooksViewHolder(view, mOnBookListener, mOnHoldListener);
     }
 
     @Override
@@ -80,27 +82,39 @@ public class ShelfBooksListAdapter extends RecyclerView.Adapter<ShelfBooksListAd
         return this.bookList.size();
     }
 
-    public class ShelfBooksViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ShelfBooksViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView bookTitle;
         CheckBox recyclerReadCheckBox;
         OnBookListener onBookListener;
+        OnHoldListener onHoldListener;
 
-        public ShelfBooksViewHolder(View view, OnBookListener onBookListener){
+        public ShelfBooksViewHolder(View view, OnBookListener onBookListener, OnHoldListener onHoldListener){
             super(view);
             bookTitle = view.findViewById(R.id.recycler_book_on_shelf_title);
             recyclerReadCheckBox = view.findViewById(R.id.recycler_read_checkbox);
             this.onBookListener = onBookListener;
+            this.onHoldListener = onHoldListener;
 
             view.setOnClickListener(this);
+            view.setOnLongClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             onBookListener.onBookClick(getAbsoluteAdapterPosition());
         }
+
+        @Override
+        public boolean onLongClick(View view) {
+            return onHoldListener.onBookHold(getAbsoluteAdapterPosition());
+        }
     }
 
     public interface OnBookListener{
         void onBookClick(int position);
+    }
+
+    public interface OnHoldListener {
+        boolean onBookHold(int position);
     }
 }

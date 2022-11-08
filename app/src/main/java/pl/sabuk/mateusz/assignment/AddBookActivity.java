@@ -89,7 +89,7 @@ public class AddBookActivity extends AppCompatActivity {
                 book.genre = genreInput.getSelectedItem().toString();
                 book.isRead = finalIsReadInput;
                 book.description = bookDescription.getText().toString() ;
-                book.addToShelves(new int[] {2,45,9,5}); // what?
+
                 // Adding book to the database
                 AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
                 db.bookDao().insertBook(book);

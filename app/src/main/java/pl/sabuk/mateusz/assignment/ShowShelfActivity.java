@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +26,7 @@ import pl.sabuk.mateusz.assignment.db.AppDatabase;
 import pl.sabuk.mateusz.assignment.db.Book;
 import pl.sabuk.mateusz.assignment.db.Shelf;
 
-public class ShowShelfActivity extends AppCompatActivity implements ShelfBooksListAdapter.OnBookListener {
+public class ShowShelfActivity extends AppCompatActivity implements ShelfBooksListAdapter.OnBookListener, ShelfBooksListAdapter.OnHoldListener {
     private ShelfBooksListAdapter shelfBooksListAdapter;
     private int shelfId;
 
@@ -84,7 +85,7 @@ public class ShowShelfActivity extends AppCompatActivity implements ShelfBooksLi
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration( this, DividerItemDecoration.VERTICAL);
         shelvesView.addItemDecoration((dividerItemDecoration));
 
-        shelfBooksListAdapter = new ShelfBooksListAdapter( this, this);
+        shelfBooksListAdapter = new ShelfBooksListAdapter( this, this, this);
         shelvesView.setAdapter(shelfBooksListAdapter);
     }
 
@@ -94,5 +95,19 @@ public class ShowShelfActivity extends AppCompatActivity implements ShelfBooksLi
         int id = this.shelfBooksListAdapter.getBookListAt(position).id;
         intent.putExtra("id", id);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onBookHold(int position) {
+
+        Context context = this;
+        int duration = Toast.LENGTH_SHORT;
+
+        CharSequence text = "Remove!";
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+        return true;
     }
 }
