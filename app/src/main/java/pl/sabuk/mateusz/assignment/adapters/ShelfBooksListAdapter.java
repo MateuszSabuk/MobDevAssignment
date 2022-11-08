@@ -1,5 +1,6 @@
 package pl.sabuk.mateusz.assignment.adapters;
 
+        import android.annotation.SuppressLint;
         import android.content.Context;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -49,7 +50,7 @@ public class ShelfBooksListAdapter extends RecyclerView.Adapter<ShelfBooksListAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ShelfBooksListAdapter.ShelfBooksViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ShelfBooksListAdapter.ShelfBooksViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.bookTitle.setText(this.bookList.get(position).title);
         holder.recyclerReadCheckBox.setChecked(this.bookList.get(position).isRead);
 
