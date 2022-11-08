@@ -6,13 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pl.sabuk.mateusz.assignment.R;
+import pl.sabuk.mateusz.assignment.db.AppDatabase;
 import pl.sabuk.mateusz.assignment.db.Book;
 import pl.sabuk.mateusz.assignment.db.Shelf;
 
@@ -44,11 +47,27 @@ public class AddShelfAdapter extends RecyclerView.Adapter<AddShelfAdapter.AddShe
     public void onBindViewHolder(@NonNull AddShelfAdapter.AddShelfViewHolder holder, int position) {
         holder.bookTitle.setText(this.bookList.get(position).title);
         holder.recyclerReadCheckBox.setChecked(this.bookList.get(position).isRead);
+
+        holder.recyclerReadCheckBox.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                bookList.get(position).isRead = holder.recyclerReadCheckBox.isChecked();
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return this.bookList.size();
+    }
+
+    public List<Integer> getSelectedBooksIds(View view) {
+        List<Integer> selectedBooks = new ArrayList<>();
+        for (int i = 0; i < bookList.size(); i++) {
+            if (bookList.get(i).isRead) {
+                selectedBooks.add(bookList.get(i).id);
+            }
+        }
+        return selectedBooks;
     }
 
     public class AddShelfViewHolder extends RecyclerView.ViewHolder{

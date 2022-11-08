@@ -17,7 +17,7 @@ public interface ShelfDao {
     List<Shelf> getShelfById(int id);
 
     @Insert
-    void insertShelf(Shelf... shelf);
+    long [] insertShelf(Shelf... shelf);
 
     @Delete
     void delete(Shelf shelf);
