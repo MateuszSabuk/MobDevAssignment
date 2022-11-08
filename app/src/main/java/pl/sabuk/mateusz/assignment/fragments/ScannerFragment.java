@@ -76,7 +76,6 @@ public class ScannerFragment extends Fragment {
         addISBNButton.setOnClickListener(view1 -> {
             String ISBNNum = textISBNField.getText().toString();
 
-            // TODO keep on fragment when changing to from vertical
 
 
 

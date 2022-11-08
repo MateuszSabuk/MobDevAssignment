@@ -37,6 +37,9 @@ public class ShowBookActivity extends AppCompatActivity {
         TextView authorText = (TextView) findViewById(R.id.bookAuthorDisplay);
         authorText.setText(book.author);
 
+        TextView generaText = (TextView) findViewById(R.id.bookGeneraDisplay);
+        generaText.setText(book.genre);
+
         TextView scoreText = (TextView) findViewById(R.id.bookScoreDisplay);
         String score = "Score: " + book.myScore.toString() + "/20";
         scoreText.setText(score);
@@ -46,10 +49,9 @@ public class ShowBookActivity extends AppCompatActivity {
         readText.setText(readBookText);
 
 
-        ImageView bookCoverView = (ImageView) findViewById(R.id.bookCoverImg);
 
         TextView ISBNTextDisplay = (TextView) findViewById(R.id.bookISBNDisplay);
-        String ISBNtext = "ISBN Num: \n" + book.isbn;
+        String ISBNtext = "ISBN Num: " + book.isbn;
         ISBNTextDisplay.setText(ISBNtext);
 
 

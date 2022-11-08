@@ -3,6 +3,9 @@
 
 #### Due date is 9th November
 
+## group is made by Mateusz Sabuk (62540) and Arthur Wilhelm Strømme Kristiansen (62255)
+
+
 ## Used technologies
 -  **Room** or **SQLite** as the database?
 	- [Documentation](https://developer.android.com/training/data-storage/room)
@@ -46,3 +49,4 @@
 
 Source:
 https://stackoverflow.com/questions/41774963/android-seekbar-show-progress-value-along-the-seekbar
+
