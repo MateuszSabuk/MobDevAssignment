@@ -17,13 +17,14 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
+import pl.sabuk.mateusz.assignment.adapters.HistoryListAdapter;
 import pl.sabuk.mateusz.assignment.adapters.ShelfBooksListAdapter;
 import pl.sabuk.mateusz.assignment.adapters.ShelfListAdapter;
 import pl.sabuk.mateusz.assignment.db.AppDatabase;
 import pl.sabuk.mateusz.assignment.db.Book;
 import pl.sabuk.mateusz.assignment.db.Shelf;
 
-public class ShowShelfActivity extends AppCompatActivity {
+public class ShowShelfActivity extends AppCompatActivity implements ShelfBooksListAdapter.OnBookListener {
     private ShelfBooksListAdapter shelfBooksListAdapter;
     private int shelfId;
 
@@ -85,7 +86,15 @@ public class ShowShelfActivity extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration( this, DividerItemDecoration.VERTICAL);
         shelvesView.addItemDecoration((dividerItemDecoration));
 
-        shelfBooksListAdapter = new ShelfBooksListAdapter( this);
+        shelfBooksListAdapter = new ShelfBooksListAdapter( this, this);
         shelvesView.setAdapter(shelfBooksListAdapter);
+    }
+
+    @Override
+    public void onBookClick(int position) {
+        Intent intent = new Intent(this, ShowShelfActivity.class);
+        int id = this.shelfBooksListAdapter.getBookListAt(position).id;
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
 }

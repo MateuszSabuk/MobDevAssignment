@@ -20,13 +20,14 @@ import java.util.List;
 
 import pl.sabuk.mateusz.assignment.AddShelfActivity;
 import pl.sabuk.mateusz.assignment.R;
+import pl.sabuk.mateusz.assignment.ShowShelfActivity;
 import pl.sabuk.mateusz.assignment.adapters.HistoryListAdapter;
 import pl.sabuk.mateusz.assignment.adapters.ShelfListAdapter;
 import pl.sabuk.mateusz.assignment.db.AppDatabase;
 import pl.sabuk.mateusz.assignment.db.Book;
 import pl.sabuk.mateusz.assignment.db.Shelf;
 
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends Fragment implements HistoryListAdapter.OnBookListener {
     private HistoryListAdapter historyListAdapter;
 
     @Override
@@ -64,7 +65,15 @@ public class HistoryFragment extends Fragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration( getContext(), DividerItemDecoration.VERTICAL);
         historyRecyclerView.addItemDecoration((dividerItemDecoration));
 
-        historyListAdapter = new HistoryListAdapter(getContext());
+        historyListAdapter = new HistoryListAdapter(getContext(), this);
         historyRecyclerView.setAdapter(historyListAdapter);
+    }
+
+    @Override
+    public void onBookClick(int position) {
+        Intent intent = new Intent(getActivity(), ShowShelfActivity.class);
+        int id = this.historyListAdapter.getBookListAt(position).id;
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
 }

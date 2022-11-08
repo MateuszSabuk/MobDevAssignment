@@ -19,10 +19,19 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.
 
     private Context context;
     private List<Book> bookList;
-    public HistoryListAdapter(Context context) {
+    private OnBookListener mOnBookListener;
+    public HistoryListAdapter(Context context, OnBookListener onBookListener) {
         this.context = context;
+        this.mOnBookListener = onBookListener;
     }
 
+
+    public Book getBookListAt(int index){
+        if (bookList.size()>index && index >= 0){
+            return bookList.get(index);
+        }
+        return null;
+    }
 
     public void setShelfList(List<Book> bookList) {
         this.bookList = bookList;
@@ -33,7 +42,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.
     @Override
     public HistoryListAdapter.HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.history_recycler, parent, false);
-        return new HistoryViewHolder(view);
+        return new HistoryViewHolder(view, mOnBookListener);
     }
 
     @Override
@@ -47,14 +56,27 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.
         return this.bookList.size();
     }
 
-    public class HistoryViewHolder extends RecyclerView.ViewHolder{
+    public class HistoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView bookTitle;
         TextView addTime;
-        public HistoryViewHolder(View view){
+        OnBookListener onBookListener;
+
+        public HistoryViewHolder(View view, OnBookListener onBookListener){
             super(view);
             bookTitle = view.findViewById(R.id.recycler_book_title);
             addTime = view.findViewById(R.id.recycler_add_time);
+            this.onBookListener = onBookListener;
 
+            view.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            onBookListener.onBookClick(getAbsoluteAdapterPosition());
+        }
+    }
+
+    public interface OnBookListener{
+        void onBookClick(int position);
     }
 }
