@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddBookActivity">
-    <!-- TODO work on layout, to small input space -->
+    <!-- TODO work on layout, to small input space, check one radio -->
 
 
     <LinearLayout

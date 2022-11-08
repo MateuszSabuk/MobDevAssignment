@@ -78,7 +78,8 @@ public class AddBookActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Book book = new Book();
 
-                book.isbn = Integer.getInteger(isbnText.getText().toString());
+
+                book.isbn = isbnText.getText().toString();
                 book.title = bookTitle.getText().toString();
                 book.author = bookAuthor.getText().toString();
                 book.myScore = Double.valueOf(scoreText.getText().toString());

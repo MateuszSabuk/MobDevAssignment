@@ -21,7 +21,7 @@ public class Book {
     public int id;
 
     @ColumnInfo(name = "isbn")
-    public int isbn;
+    public String isbn;
 
     @ColumnInfo(name = "title")
     public String title;
