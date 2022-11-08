@@ -79,7 +79,6 @@ public class ScannerFragment extends Fragment {
             // TODO make sure that the input is a number
             // TODO keep on fragment when changing to from vertical
 
-
             Log.d("isbn Num", ISBNNum);
             Toast.makeText(getContext(), "Getting Book from the web", Toast.LENGTH_SHORT).show();
             BookAPIClass book = new BookAPIClass(ISBNNum, this.requireContext(), this.getActivity());
@@ -148,7 +147,7 @@ public class ScannerFragment extends Fragment {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() != 0) {
                     String barcodeVal =  barcodes.valueAt(0).displayValue;
-                    Toast.makeText(getContext(), "Book scanned", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Book scanned", Toast.LENGTH_SHORT).show(); // TODO fix toast
                     Log.d("barcode", barcodeVal);
                     textISBNField.setText(barcodeVal);
 
