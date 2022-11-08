@@ -47,6 +47,6 @@
     - All book data
 
 
-Source:
-https://stackoverflow.com/questions/41774963/android-seekbar-show-progress-value-along-the-seekbar
-
+Source: 
+* https://stackoverflow.com/questions/41774963/android-seekbar-show-progress-value-along-the-seekbar
+* https://medium.com/analytics-vidhya/creating-a-barcode-scanner-using-android-studio-71cff11800a2
