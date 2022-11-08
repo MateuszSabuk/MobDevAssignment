@@ -20,6 +20,7 @@ import java.util.List;
 
 import pl.sabuk.mateusz.assignment.AddShelfActivity;
 import pl.sabuk.mateusz.assignment.R;
+import pl.sabuk.mateusz.assignment.ShowBookActivity;
 import pl.sabuk.mateusz.assignment.ShowShelfActivity;
 import pl.sabuk.mateusz.assignment.adapters.HistoryListAdapter;
 import pl.sabuk.mateusz.assignment.adapters.ShelfListAdapter;
@@ -71,7 +72,7 @@ public class HistoryFragment extends Fragment implements HistoryListAdapter.OnBo
 
     @Override
     public void onBookClick(int position) {
-        Intent intent = new Intent(getActivity(), ShowShelfActivity.class);
+        Intent intent = new Intent(getActivity(), ShowBookActivity.class);
         int id = this.historyListAdapter.getBookListAt(position).id;
         intent.putExtra("id", id);
         startActivity(intent);

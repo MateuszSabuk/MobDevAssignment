@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,18 +31,28 @@ public class AddShelfActivity extends AppCompatActivity {
         addShelfButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String name = ((EditText) findViewById(R.id.newShelfEditText)).getText().toString();
-                // TODO: Sanitize more
-                if(name.length()==0) {
+                if(name == null || name.isEmpty() || name.trim().isEmpty()) {
                     finish();
+                    return;
                 }
-                //TODO: Checkboxes for the books
-//                addShelfAdapter.getBookList()
+                System.out.println(name);
+                name = name.replace("\n", " ").replace("\r", "");
+                System.out.println(name);
 
                 Shelf shelf = new Shelf();
                 shelf.name = name;
 
                 AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
-                db.shelfDao().insertShelf(shelf);
+                List<Integer> selectedBooks = addShelfAdapter.getSelectedBooksIds(v);
+                List<Book> bookList = db.bookDao().getAllBooks();
+                long shelfId = db.shelfDao().insertShelf(shelf)[0];
+                for (int i = 0; i < bookList.size(); i++){
+                    if (selectedBooks.contains(bookList.get(i).id)){
+                        bookList.get(i).addToShelves(new int[] {(int)shelfId});
+                        db.bookDao().updateBook(bookList.get(i));
+                    }
+                }
+
 
                 finish();
             }
