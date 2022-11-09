@@ -1,4 +1,4 @@
-## !An updated version of the app is provided [here](https://github.com/MateuszSabuk/MobDevAssignment) because I was too ashamed of the way I implemented the database
+## !An updated version of the app is provided [here](https://github.com/MateuszSabuk/MobDevAssignment-redo) because I was too ashamed of the way I implemented the database
 
 # Mobile Development Small Project
 ### My Little Library
