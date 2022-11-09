@@ -57,16 +57,22 @@ public class ShowShelfActivity extends AppCompatActivity implements ShelfBooksLi
         AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
         // Get all books from database
         List<Book> bookList = db.bookDao().getAllBooks();
+        List<Shelf> shelfList = db.shelfDao().getAllShelves();
+        Shelf shelf = db.shelfDao().getShelfById(shelfId).get(0);
+
+
 
         if (shelfId == 1) {
-            for (int i = bookList.size()-1; i >= 0 ; i--) {
-                if(bookList.get(i).getShelves().length > 0){
-                    bookList.remove(i);
+            for (int j = bookList.size()-1; j >= 0 ; j--) {
+                for (int i = shelfList.size()-1; i > 0 ; i--) {
+                    if (shelfList.get(i).hasBook(bookList.get(j).id)){
+                        bookList.remove(j);
+                    }
                 }
             }
         } else {
             for (int i = bookList.size()-1; i >= 0 ; i--) {
-                if(!bookList.get(i).isInShelf(shelfId)){
+                if(!shelf.hasBook(bookList.get(i).id)){
                     bookList.remove(i);
                 }
             }
@@ -108,6 +114,13 @@ public class ShowShelfActivity extends AppCompatActivity implements ShelfBooksLi
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
+        AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
+
+        Shelf shelf = db.shelfDao().getShelfById(this.shelfId).get(0);
+        shelf.removeBook(this.shelfBooksListAdapter.getBookListAt(position).id);
+
+        db.shelfDao().updateShelf(shelf);
+        updateRecyclerView();
         return true;
     }
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import pl.sabuk.mateusz.assignment.R;
+import pl.sabuk.mateusz.assignment.db.AppDatabase;
 import pl.sabuk.mateusz.assignment.db.Shelf;
 
 public class ShelfListAdapter extends RecyclerView.Adapter<ShelfListAdapter.MyViewHolder> {
@@ -46,8 +47,15 @@ public class ShelfListAdapter extends RecyclerView.Adapter<ShelfListAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull ShelfListAdapter.MyViewHolder holder, int position) {
         holder.shelfName.setText(this.shelfList.get(position).name);
-        holder.numOfBooks.setText(String.valueOf(this.shelfList.get(position).numOfReadBooks) + " / "
-                +String.valueOf(this.shelfList.get(position).numOfBooks));
+        int readBooks = 0;
+        AppDatabase db = AppDatabase.getDbInstance(context);
+        for (int i = 0; i <this.shelfList.get(position).getBooks().size();i++) {
+            if(db.bookDao().getBookById(this.shelfList.get(position).getBooks().get(i)).isRead) {
+                readBooks ++;
+            }
+        }
+        holder.numOfBooks.setText(String.valueOf(readBooks + " / "
+                +String.valueOf(this.shelfList.get(position).getBooks().size())));
     }
 
     @Override

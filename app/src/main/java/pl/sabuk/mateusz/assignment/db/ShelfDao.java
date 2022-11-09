@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -17,7 +18,10 @@ public interface ShelfDao {
     List<Shelf> getShelfById(int id);
 
     @Insert
-    long [] insertShelf(Shelf... shelf);
+    void insertShelf(Shelf... shelf);
+
+    @Update
+    void updateShelf(Shelf... shelf);
 
     @Delete
     void delete(Shelf shelf);

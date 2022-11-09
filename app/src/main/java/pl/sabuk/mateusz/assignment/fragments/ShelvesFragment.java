@@ -62,24 +62,22 @@ public class ShelvesFragment extends Fragment implements ShelfListAdapter.OnShel
         List<Shelf> shelfList = db.shelfDao().getAllShelves();
         List<Book> bookList = db.bookDao().getAllBooks();
         // Populate shelves with books
-        for (int i = shelfList.size()-1; i > 0 ; i--) {
-            shelfList.get(i).numOfBooks = 0;
-            shelfList.get(i).numOfReadBooks = 0;
-            for (int j = bookList.size()-1; j >= 0 ; j--) {
-                if(bookList.get(j).getShelves().length == 0){
-                    shelfList.get(0).numOfBooks++;
-                    if(bookList.get(j).isRead) shelfList.get(0).numOfReadBooks++;
-                    bookList.remove(j);
-                    continue;
-                }
-                if(bookList.get(j).isInShelf(shelfList.get(i).id)){
-                    shelfList.get(i).numOfBooks++;
-                    if(bookList.get(j).isRead) shelfList.get(i).numOfReadBooks++;
+
+        ////////////////////////////////////////
+        for (int j = bookList.size()-1; j >= 0 ; j--) {
+            boolean isOnShelf = false;
+            for (int i = shelfList.size()-1; i > 0 ; i--) {
+                if (shelfList.get(i).hasBook(bookList.get(j).id)){
+                    isOnShelf = true;
                 }
             }
+            if (!isOnShelf && shelfList.get(0).id == 1) {
+                shelfList.get(0).addBook(bookList.get(j).id);
+            }
         }
+        ///////////////////////////////////////
         // If no unlisted books then don't show the "unlisted" shelf
-        if (shelfList.get(0).id == 1 && shelfList.get(0).numOfBooks == 0) {
+        if (shelfList.get(0).id == 1 && shelfList.get(0).getBooks().size() == 0) {
             shelfList.remove(0);
         }
         // Reverse so new are on top and unlisted books on the bottom

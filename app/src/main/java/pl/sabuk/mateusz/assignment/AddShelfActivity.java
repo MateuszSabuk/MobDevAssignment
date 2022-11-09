@@ -42,17 +42,13 @@ public class AddShelfActivity extends AppCompatActivity {
                 Shelf shelf = new Shelf();
                 shelf.name = name;
 
-                AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
                 List<Integer> selectedBooks = addShelfAdapter.getSelectedBooksIds(v);
-                List<Book> bookList = db.bookDao().getAllBooks();
-                long shelfId = db.shelfDao().insertShelf(shelf)[0];
-                for (int i = 0; i < bookList.size(); i++){
-                    if (selectedBooks.contains(bookList.get(i).id)){
-                        bookList.get(i).addToShelves(new int[] {(int)shelfId});
-                        db.bookDao().updateBook(bookList.get(i));
-                    }
+                for (int i = 0; i < selectedBooks.size(); i++){
+                    shelf.addBook(selectedBooks.get(i));
                 }
 
+                AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
+                db.shelfDao().insertShelf(shelf);
 
                 finish();
             }
